@@ -116,32 +116,35 @@ export default function OrderbookVisualizer({
 				</Typography>
 			</Box>
 
-			{/* Asks (Sell orders) */}
-			<Box sx={{ mb: 1 }}>
-				{visibleAsks.map((ask) => renderRow(ask, "ask"))}
-			</Box>
+			{/* Scrollable orderbook rows */}
+			<Box sx={{ flex: 1, minHeight: 0, overflowY: "auto", mb: 1 }}>
+				{/* Asks (Sell orders) */}
+				<Box>
+					{visibleAsks.map((ask) => renderRow(ask, "ask"))}
+				</Box>
 
-			{/* Spread information */}
-			<Box
-				sx={{
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-					py: 0.5,
-					bgcolor: "background.paper",
-					border: 1,
-					borderColor: "divider",
-					borderRadius: 1,
-					mb: 1,
-				}}
-			>
-				<Typography variant="caption" color="text.secondary">
-					Spread: {formatCurrency(spread)} ({spreadPercentage.toFixed(4)}%)
-				</Typography>
-			</Box>
+				{/* Spread information */}
+				<Box
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						py: 0.5,
+						bgcolor: "background.paper",
+						border: 1,
+						borderColor: "divider",
+						borderRadius: 1,
+						mb: 1,
+					}}
+				>
+					<Typography variant="caption" color="text.secondary">
+						Spread: {formatCurrency(spread)} ({spreadPercentage.toFixed(4)}%)
+					</Typography>
+				</Box>
 
-			{/* Bids (Buy orders) */}
-			<Box>{visibleBids.map((bid) => renderRow(bid, "bid"))}</Box>
+				{/* Bids (Buy orders) */}
+				<Box>{visibleBids.map((bid) => renderRow(bid, "bid"))}</Box>
+			</Box>
 		</Box>
 	);
 }
