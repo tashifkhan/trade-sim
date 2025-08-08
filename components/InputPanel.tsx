@@ -24,7 +24,6 @@ import {
 } from "@mui/icons-material";
 import { getFeeTiers } from "@/utils/fees";
 import { SimulationParams, WebSocketStatus } from "@/types/types";
-
 const cryptoPairs = [
 	"BTC-USDT",
 	"ETH-USDT",
@@ -151,7 +150,7 @@ export default function InputPanel({
 							name="quantityUsd"
 							type="number"
 							value={localParams.quantityUsd}
-							onChange={handleSelectChange}
+							onChange={handleChange}
 							InputProps={{
 								startAdornment: (
 									<InputAdornment position="start">$</InputAdornment>
@@ -220,10 +219,15 @@ export default function InputPanel({
 						sx={{
 							mt: 2,
 							py: 1.5,
+							fontWeight: 600,
+							letterSpacing: 1,
+							borderRadius: 2,
+							boxShadow: 2,
 							transition: "all 0.2s",
 							"&:hover": {
 								transform: "translateY(-2px)",
-								boxShadow: 3,
+								boxShadow: 6,
+								bgcolor: "primary.dark",
 							},
 						}}
 					>
