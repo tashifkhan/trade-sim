@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { OrderbookData, WebSocketStatus } from '@/types/types';
+import { OrderbookData, WebSocketStatus, OrderbookEntry } from '@/types/types';
 
 // Process raw orderbook data to make it easier to work with
 const processOrderbook = (data: OrderbookData): OrderbookData => {
@@ -12,13 +12,13 @@ const processOrderbook = (data: OrderbookData): OrderbookData => {
   let askTotal = 0;
   
   // Process bids (buy orders)
-  const processedBids = data.bids.map(([price, size]) => {
+  const processedBids: OrderbookEntry[] = data.bids.map(([price, size]) => {
     bidTotal += size;
     return { price, size, total: bidTotal };
   });
-  
+
   // Process asks (sell orders)
-  const processedAsks = data.asks.map(([price, size]) => {
+  const processedAsks: OrderbookEntry[] = data.asks.map(([price, size]) => {
     askTotal += size;
     return { price, size, total: askTotal };
   });
